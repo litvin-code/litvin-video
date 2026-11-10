@@ -10,6 +10,17 @@
     </style>
 </head>
 <body>
-    <video controls playsinline preload="auto" autoplay muted loop src="litvin-cha-scha.mp4"></video>
+    <!-- muted и playsinline обязательны для автоплея на мобилках -->
+    <video id="vid" controls playsinline autoplay muted loop src="litvin-cha-scha.mp4"></video>
+    
+    <script>
+        // Принудительный запуск, если браузер затупил
+        document.addEventListener("DOMContentLoaded", function() {
+            var v = document.getElementById("vid");
+            v.play().catch(function(error) {
+                console.log("Браузер заблокировал автоплей, нужно нажать вручную.");
+            });
+        });
+    </script>
 </body>
 </html>
